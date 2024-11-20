@@ -2,7 +2,19 @@ declare global {
   interface Window {
     SpeechRecognition: {
       prototype: SpeechRecognition;
-      new (): SpeechRecognition;
+      new(): SpeechRecognition;
+    };
+    webkitSpeechRecognition: {
+      prototype: SpeechRecognition;
+      new(): SpeechRecognition;
+    };
+    mozSpeechRecognition: {
+      prototype: SpeechRecognition;
+      new(): SpeechRecognition;
+    };
+    msSpeechRecognition: {
+      prototype: SpeechRecognition;
+      new(): SpeechRecognition;
     };
   }
 
@@ -11,9 +23,13 @@ declare global {
     continuous: boolean;
     interimResults: boolean;
     maxAlternatives: number;
+
     start(): void;
+
     stop(): void;
+
     abort(): void;
+
     onaudiostart: (event: Event) => void;
     onaudioend: (event: Event) => void;
     onresult: (event: SpeechRecognitionEvent) => void;
@@ -33,12 +49,14 @@ declare global {
 
   interface SpeechRecognitionResultList {
     length: number;
+
     [index: number]: SpeechRecognitionResult;
   }
 
   interface SpeechRecognitionResult {
     isFinal: boolean;
     length: number;
+
     [index: number]: SpeechRecognitionAlternative;
   }
 
@@ -53,5 +71,4 @@ declare global {
   }
 }
 
-// Make sure to export nothing so it's treated as a global declaration
 export {};
